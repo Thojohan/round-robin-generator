@@ -328,7 +328,7 @@ function displaySchedule() {
       )
     : headerForm.insertAdjacentHTML(
         "afterBegin",
-        "<div class'slider-wrapper'>Sorry, text to speach not supported</div>"
+        "<div class'slider-wrapper' style='font-size: 12px'>Sorry, text to speach not supported</div>"
       );
 
   schedule.map((round, index) => {

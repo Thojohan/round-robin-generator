@@ -247,7 +247,8 @@ function startHandler(e) {
       }, [])
       .flat(),
   ];
-  isTicking = true;
+  isTicking = true; 
+  new SpeechSynthesisUtterance("");
   countDown(roundArray, speach, buttons, startRound);
 }
 

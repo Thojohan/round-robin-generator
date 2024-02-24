@@ -139,7 +139,7 @@ async function handleSpeach(roundNumb, headerText) {
     if (element !== "") {
       setTimeout(() => {
         // Rate og pitch på stemmen.
-        // const synth = window.speechSynthesis;
+        const synth = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance(element);
         utterance.voice = voices[0];
         utterance.rate = 0.75;
@@ -248,7 +248,6 @@ function startHandler(e) {
       .flat(),
   ];
   isTicking = true; 
-  new SpeechSynthesisUtterance("");
   countDown(roundArray, speach, buttons, startRound);
 }
 

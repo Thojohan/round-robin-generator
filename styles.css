@@ -64,23 +64,25 @@ button:disabled {
 
 .delete-btn {
   position: absolute;
-  left: 95%;
+  right: 0;
   width: 35px;
   height: 35px;
   border-radius: 50%;
   top: 12%;
   color: black;
-  font-size: 16px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .header-form {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 550px) {
   .header-form {
     flex-direction: column;
   }
@@ -97,12 +99,13 @@ button:disabled {
 }
 
 .header-form span {
-  margin-right: 15px;
+  margin-right: 14px;
 }
 
 .slider-wrapper {
   display: flex;
   margin-bottom: 25px;
+  padding-right: 35px;
 }
 
 .switch {
@@ -156,11 +159,11 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 
-.slider.round {
+.slider.circle {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.circle:before {
   border-radius: 50%;
 }
 
@@ -321,3 +324,4 @@ input:checked + .slider:before {
     font-size: 12px;
   }
 }
+

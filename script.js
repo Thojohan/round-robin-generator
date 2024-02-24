@@ -15,6 +15,7 @@ let isTicking = false;
 
 // Samler clean-up som er felles for reset og når nedtelling er ferdig
 function endHandler() {
+  console.log(document.querySelectorAll(".round"));
   document.querySelectorAll(".round").forEach((el) => {
     el.style.backgroundColor = "white";
   });
@@ -104,7 +105,7 @@ function stopHandler(e) {
 }
 
 // Håndtere opplesning av kamper
-function handleSpeach(roundNumb, headerText) {
+async function handleSpeach(roundNumb, headerText) {
   // Returnerer om den allerede leser opp (husk den kalles en gang per sekund)
   if (speachEl === roundNumb) return;
   speachEl = roundNumb;
@@ -115,16 +116,37 @@ function handleSpeach(roundNumb, headerText) {
     ),
   ];
 
+  // Henter stemmer async
+  const synth = window.speechSynthesis;
+  async function getVoices() {
+    const GET_VOICES_TIMEOUT = 2000;
+    let voices = window.speechSynthesis.getVoices();
+    if (voices.length) {
+      return voices;
+    }
+    let voiceschanged = new Promise((r) =>
+      speechSynthesis.addEventListener("voiceschanged", r, { once: true })
+    );
+    let timeout = new Promise((r) => setTimeout(r, GET_VOICES_TIMEOUT));
+
+    await Promise.race([voiceschanged, timeout]);
+    return window.speechSynthesis.getVoices();
+  }
+  const voicePromise = getVoices();
+  const voices = await voicePromise;
+
   Array.from(text).forEach((element) => {
-    if (element !== "")
+    if (element !== "") {
       setTimeout(() => {
         // Rate og pitch på stemmen.
-        const synth = window.speechSynthesis;
+        // const synth = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance(element);
+        utterance.voice = voices[0];
         utterance.rate = 0.75;
         utterance.pitch = 0.4;
         synth.speak(utterance);
       }, 1000);
+    }
   });
 }
 
@@ -302,7 +324,7 @@ function displaySchedule() {
   "speechSynthesis" in window
     ? headerForm.insertAdjacentHTML(
         "afterBegin",
-        "<div class='slider-wrapper'><span>Tekst til tale</span><span><label class='switch'><input type='checkbox' name='speach' checked><span class='slider round'></span></label></span></div>"
+        "<div class='slider-wrapper'><span>Tekst til tale</span><span><label class='switch'><input type='checkbox' name='speach' checked><span class='slider circle'></span></label></span></div>"
       )
     : headerForm.insertAdjacentHTML(
         "afterBegin",

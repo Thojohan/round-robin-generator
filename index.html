@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RRG v4</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  
+  <template id="printButtonTemplate">
+    <button id="printButton">Print!</button>
+  </template>
+
+  <template id="newField">
+    <div class="input-container"><input type="text" placeholder="Navn" name="name" autocomplete="on" data-1p-ignore="true"><button class="delete-btn" type="button">✖️</button></div>
+  </template>
+
+  <template id="upDownButtons">
+    <div><button class="pre-button" data-dir='up'>⬆️ Opp</button><button class="pre-button" data-dir='down'>Ned ⬇️</button></div>
+  </template>
+
+  <template id="scheduleHeader">
+    <form class="header-form">
+      <fieldset>
+        <legend>Rundelengde</legend>
+        <select class="timer" name="minutesRound" id="minutesRound" aria-label="Runde minutter">
+        
+        </select><span> Min</span>
+        <select class="timer" name="secondsRound" id="secondsRound" aria-label="Runde sekunder">
+       </select><span> Sek</span>
+      </fieldset>
+      <fieldset>
+        <legend>Pauselengde</legend>
+        <select class="timer" name="minutesBreak" id="minutesBreak" aria-label="Pause minutter">
+        </select><span> Min</span>
+        <select class="timer" name="secondsBreak" id="secondsBreak" aria-label="Pause sekunder">
+        </select><span> Sek</span>
+      </fieldset><fieldset>
+        <legend>Start på</legend><span>Runde</span>
+        <select class="startAt" name="startRound" id="startRound" aria-label="Startrunde">
+        </select>
+      </fieldset>
+      <button class="pre-button" id="start">Start sparring!</button>
+    </form>
+  </template>
+
+  <template id="stopButtons"><div class="buttonDiv"><button id="pause">Pause</button><button id="reset">Reset</button></div></template>
+  </template>
+
+  <div class="container">
+    <h1>Round Robin Generator v4</h1>
+    <p id="infotekst">Bruk Enter for å automatisk få en ny linje!
+    <div class="panel">
+      <form id="namesForm" autocomplete="on">
+        <div id="nameFields">
+        </div>
+        <p id="infotekst">Navnerapportering ferdig?
+          <br />
+          <br />
+          <button type="submit" class="submit-button">Lag brackets!</button>
+
+      </form>
+    </div>
+    <div class="schedule" id="schedule"></div>
+    <br />
+    <script src="script.js"></script>
+</body>
+
+</html>

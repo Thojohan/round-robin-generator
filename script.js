@@ -326,9 +326,9 @@ function displaySchedule() {
         "afterBegin",
         "<div class='slider-wrapper'><span>Tekst til tale</span><span><label class='switch'><input type='checkbox' name='speach' checked><span class='slider circle'></span></label></span></div>"
       )
-    : headerForm.insertAdjacentHTML(
+    :   headerForm.insertAdjacentHTML(
         "afterBegin",
-       "<div class='slider-wrapper' style='width: 130px, font-size: 12px'>Sorry, text to speach not supported</div>"
+        "<div class='slider-wrapper' style='font-size: 12px, height: 50px'>Speach not supported</div>"
       );
 
   schedule.map((round, index) => {

@@ -135,9 +135,10 @@ async function handleSpeach(roundNumb, headerText) {
   const voicePromise = getVoices();
   const voices = await voicePromise;
 
-  Array.from(text).forEach((element) => {
-    if (element !== "") {
-      setTimeout(() => {
+  Array.from(text).forEach((el) => {
+    if (el !== "") {
+      setTimeout(() => {  
+        const element = "'" + el + "'";
         // Rate og pitch på stemmen.
         const synth = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance(element);
